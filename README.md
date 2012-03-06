@@ -25,6 +25,8 @@ In project
 	use Symfony\Component\Finder\Finder;
 	use Spriter\Generator;
 	use Spriter\Positioner\VerticalPositioner;
+	use Spriter\Dumper\LessDumper;
+	use Spriter\Dumper\DashNameGenerator;
 	use Assetic\Filter\OptiPngFilter;
 
 	$finder = new Finder();
@@ -39,6 +41,11 @@ In project
 
 	$file = new \SplFileObject('./images/sprite.png', 'w');
 	$file->fwrite($sprite);
+
+	//Also you can dump CSS/LESS styles for your sprite.
+	$dumper = new LessDumper($generator->getPositions(), new DashNameGenerator());
+	$file = new \SplFileObject('./less/sprites.less', 'w');
+	$file->fwrite($dumper->dump());
 ```
 
 Console
