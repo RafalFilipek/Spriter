@@ -24,7 +24,7 @@ In project
 <?php
 	use Symfony\Component\Finder\Finder;
 	use Spriter\Generator;
-	use Spriter\Positioner\VerticalPositioner
+	use Spriter\Positioner\VerticalPositioner;
 	use Assetic\Filter\OptiPngFilter;
 
 	$finder = new Finder();
@@ -32,7 +32,7 @@ In project
 
 	$generator = new Generator($finder);
 	 $filters = array(
-		new OptiPngFilter()
+		new OptiPngFilter(),
 	);
 
 	$sprite = $generator->generate(new VerticalPositioner(), $filters);
