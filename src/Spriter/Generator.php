@@ -35,6 +35,12 @@ class Generator
 	protected $sprite;
 
 	/**
+	 * Array containing elements positions.
+	 * @var array
+	 */
+	protected $positions;
+
+	/**
 	 * Lista dostępnym procesorów obrazu wspierana przez bibliotekę Imagine
 	 * @var array
 	 */
@@ -81,9 +87,9 @@ class Generator
 		list($width, $height) = $positioner->calculateSize();
 		$this->sprite = $this->processor->create(new Box($width, $height));
 
-		$positions = $positioner->process();
+		$this->positions = $positioner->process();
 
-		foreach ($positions as $file => $position) {
+		foreach ($this->positions as $file => $position) {
 			$image = $this->processor->open($file);
 			$this->sprite->paste($image, $position);
 		}
@@ -95,6 +101,15 @@ class Generator
 
 		return $this->sprite;
 
+	}
+
+	/**
+	 * Returns elements positions array.
+	 * @return array
+	 */
+	public function getPositions()
+	{
+		return $this->positions;
 	}
 
 }

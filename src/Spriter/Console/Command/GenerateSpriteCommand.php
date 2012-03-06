@@ -20,9 +20,20 @@ use Assetic\Filter\OptiPngFilter;
 
 class GenerateSpriteCommand extends Command {
 
+	protected $supported = array('gif', 'jpeg', 'png', 'jpg', 'GIF', 'jpeg', 'PNG', 'JPG');
+
 	protected $positioners = array(
 		'vertical' => 'Spriter\Positioner\VerticalPositioner',
 		'horizontal' => 'Spriter\Positioner\HorizontalPositioner',
+	);
+
+	protected $dumpers = array(
+		'css' => 'Spriter\Dumper\CssDumper',
+		'less' => 'Spriter\Dumper\LessDumper'
+	);
+
+	protected $nameGenerators = array(
+		'dash' => 'Spriter\Dumper\DashNameGenerator'
 	);
 
 	protected $path;
@@ -39,6 +50,10 @@ class GenerateSpriteCommand extends Command {
 		$this->addOption('name', null, InputOption::VALUE_OPTIONAL, 'Nazwa pliku wyjściowego', 'sprite.png');
 		$this->addOption('output', null, InputOption::VALUE_OPTIONAL, 'Ścieżka do katalogu w którym ma zostać wygenerowany plik. Domyślnie wartość argumentu <info>path</info>', null);
 		$this->addOption('no-optim', null, InputOption::VALUE_NONE, 'Jeżeli ustawiony obraz nie zostanie zoptymalizowany');
+		foreach (array_keys($this->dumpers) as $key) {
+			$this->addOption('dump-' . $key, null, InputOption::VALUE_OPTIONAL, sprintf('Ścieżka do pliku <info>%s</info> który zostanie wygenerowany.', strtoupper($key)), false);
+		}
+		$this->addOption('rule-name-style', null, InputOption::VALUE_OPTIONAL, 'Sposób budowania nazw reguł styli.', 'dash');
 	}
 
 	protected function initialize(InputInterface $input, OutputInterface $output)
@@ -84,7 +99,7 @@ class GenerateSpriteCommand extends Command {
 		@unlink($fileName);
 
 		$finder = new Finder();
-		$finder->files()->in($this->path->getRealpath())->notName($fileName);
+		$finder->files()->in($this->path->getRealpath())->notName($fileName)->name('/\.'.implode('|', $this->supported).'$/');
 
 		$generator = new Generator($finder);
 
@@ -100,6 +115,17 @@ class GenerateSpriteCommand extends Command {
 
 		$file = new \SplFileObject($fileName, 'w');
 		$file->fwrite($sprite);
+
+		$nameGenerator = new $this->nameGenerators[$input->getOption('rule-name-style')];
+
+		foreach (array_keys($this->dumpers) as $key) {
+			$optionName = 'dump-' . $key;
+			if($input->getOption($optionName) !== false) {
+				$file = new \SplFileObject($input->getOption($optionName), 'w');
+				$dumper = new $this->dumpers[$key]($generator->getPositions(), $nameGenerator);
+				$file->fwrite($dumper->dump());
+			}
+		}
 
 	}
 

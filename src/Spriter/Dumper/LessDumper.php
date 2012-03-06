@@ -29,7 +29,7 @@ EOF;
 		$this->nameGenerator = $nameGenerator;
 	}
 
-	public function proceed()
+	public function dump()
 	{
 		$output = '';
 
