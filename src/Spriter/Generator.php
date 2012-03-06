@@ -85,7 +85,7 @@ class Generator
 
 		foreach ($positions as $file => $position) {
 			$image = $this->processor->open($file);
-			$this->sprite->paste($image->get('png'), $position);
+			$this->sprite->paste($image, $position);
 		}
 
 		if(!empty($additonalFilters)) {
