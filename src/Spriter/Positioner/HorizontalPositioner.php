@@ -3,7 +3,7 @@
 /**
  * SPRITER
  *
- * (c) Rafał Filipek <rafal.filipek@firma.o2.pl>
+ * (c) Rafał Filipek <rafal.filipek@gmail.com>
  *
  */
 
