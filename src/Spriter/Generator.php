@@ -12,6 +12,7 @@ namespace Spriter;
 use Symfony\Component\Finder\Finder;
 use Spriter\Positioner\PositionerInterface;
 use Imagine\Image\Box;
+use Imagine\Image\Color;
 use Assetic\Asset\StringAsset;
 
 class Generator
@@ -72,6 +73,7 @@ class Generator
 		{
 			$this->elements[] = $file;
 		}
+
 	}
 
 	/**
@@ -85,7 +87,7 @@ class Generator
 	{
 		$positioner->setElements($this->elements);
 		list($width, $height) = $positioner->calculateSize();
-		$this->sprite = $this->processor->create(new Box($width, $height));
+		$this->sprite = $this->processor->create(new Box($width, $height), new Color('fff', 100));
 
 		$this->positions = $positioner->process();
 
