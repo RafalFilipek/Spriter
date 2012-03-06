@@ -1,0 +1,17 @@
+{
+    "name": "RafalFilipek/Spriter",
+    "description": "Sprites Generator",
+    "require": {
+        "imagine/imagine": "v0.2.8",
+        "kriswallsmith/assetic": "1.1.x-dev",
+        "symfony/class-loader": "2.1.x-dev",
+        "symfony/console": "2.1.x-dev",
+        "symfony/finder": "2.1.x-dev"
+    },
+    "authors": [
+        {
+            "name": "Rafal Filipek",
+            "email": "rafal.filipek@firma.o2.pl"
+        }
+    ]
+}

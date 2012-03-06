@@ -1,0 +1,11 @@
+#!/usr/bin/php
+<?php
+
+/**
+ * SPRITER
+ *
+ * (c) Rafał Filipek <rafal.filipek@firma,o2.pl>
+ *
+ */
+
+require_once __DIR__.'/../src/Spriter/Console/Spriter.php';
