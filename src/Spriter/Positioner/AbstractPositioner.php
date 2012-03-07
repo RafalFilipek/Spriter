@@ -12,7 +12,7 @@ namespace Spriter\Positioner;
 use Imagine\Image\Box;
 use Imagine\Image\Point;
 
-abstract class BasePositioner implements PositionerInterface
+abstract class AbstractPositioner implements PositionerInterface
 {
 	/**
 	 * Elementy które będą pozycjonowane

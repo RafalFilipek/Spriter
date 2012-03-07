@@ -20,26 +20,54 @@ use Assetic\Filter\OptiPngFilter;
 
 class GenerateSpriteCommand extends Command {
 
+	/**
+	 * Supported formats
+	 * @var array
+	 */
 	protected $supported = array('gif', 'jpeg', 'png', 'jpg', 'GIF', 'jpeg', 'PNG', 'JPG');
 
+	/**
+	 * Avaliable positioners
+	 * @var array
+	 */
 	protected $positioners = array(
 		'vertical' => 'Spriter\Positioner\VerticalPositioner',
 		'horizontal' => 'Spriter\Positioner\HorizontalPositioner',
 	);
 
+	/**
+	 * Avaliable dumpers
+	 * @var array
+	 */
 	protected $dumpers = array(
 		'css' => 'Spriter\Dumper\CssDumper',
 		'less' => 'Spriter\Dumper\LessDumper'
 	);
 
+	/**
+	 * Avaliable name generators
+	 * @var array
+	 */
 	protected $nameGenerators = array(
 		'dash' => 'Spriter\Dumper\DashNameGenerator'
 	);
 
+	/**
+	 * Path where images ar stored
+	 * @var string
+	 */
 	protected $path;
 
+	/**
+	 * Path where sprite image will be generated
+	 * @var string
+	 */
 	protected $outputPath;
 
+	/**
+	 * Constructor
+	 * @param string $name command name
+	 */
 	public function __construct($name = null)
 	{
 		parent::__construct($name);
@@ -56,6 +84,9 @@ class GenerateSpriteCommand extends Command {
 		$this->addOption('rule-name-style', null, InputOption::VALUE_OPTIONAL, 'Sposób budowania nazw reguł styli.', 'dash');
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	protected function initialize(InputInterface $input, OutputInterface $output)
 	{
 		if (($path = $input->getArgument('path')) === '.') {
@@ -91,6 +122,9 @@ class GenerateSpriteCommand extends Command {
 		}
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
 

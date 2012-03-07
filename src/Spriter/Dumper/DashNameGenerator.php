@@ -2,8 +2,13 @@
 
 namespace Spriter\Dumper;
 
-class DashNameGenerator extends BaseNameGenerator {
+use Spriter\Dumper\RuleNameGeneratorInterface;
 
+class DashNameGenerator implements RuleNameGeneratorInterface {
+
+	/**
+	 * {@inheritdoc}
+	 */
 	public function get($path)
 	{
 		$info = pathinfo($path);

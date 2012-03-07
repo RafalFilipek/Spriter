@@ -51,12 +51,14 @@ In project
 Console
 -------
 
-```
-./bin/spriter generate
-```
-
-For help
+For help execute
 
 ```
 ./bin/spriter help generate
+```
+
+Example
+
+```
+./bin/spriter generate ~/Php/Project/Images/ --dump-less ~/Php/Project/Styles/sprites.less
 ```

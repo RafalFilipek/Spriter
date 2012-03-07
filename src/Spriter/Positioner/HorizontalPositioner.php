@@ -10,8 +10,9 @@
 namespace Spriter\Positioner;
 
 use Imagine\Image\Point;
+use Spriter\Positioner\AbstractPositioner;
 
-class HorizontalPositioner extends BasePositioner
+class HorizontalPositioner extends AbstractPositioner
 {
 	/**
 	 * {@inheritdoc}

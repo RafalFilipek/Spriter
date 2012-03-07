@@ -18,19 +18,19 @@ use Assetic\Asset\StringAsset;
 class Generator
 {
 	/**
-	 * Tablica przechowująca listę elementów graficznych, które mają zostąć przekształcone na sprite.
+	 * Elements that will be merged into sprite
 	 * @var array
 	 */
 	protected $elements;
 
 	/**
-	 * Tablia za opcjami konfiguracyjnymi generatora
+	 * Configuration options
 	 * @var array
 	 */
 	protected $options;
 
 	/**
-	 * Obiekt sprite
+	 * Sprite object
 	 * @var Imagine[GD/Imagic]/Image
 	 */
 	protected $sprite;
@@ -42,7 +42,7 @@ class Generator
 	protected $positions;
 
 	/**
-	 * Lista dostępnym procesorów obrazu wspierana przez bibliotekę Imagine
+	 * Avaliable image processors
 	 * @var array
 	 */
 	protected $processors = array(
@@ -51,7 +51,7 @@ class Generator
 	);
 
 	/**
-	 * Konstruktor
+	 * Contstructor
 	 * @param Finder $finder  Instancja klasy finder przechowująca ścieżki do wszystkich plików, które mają zostać przerobione na sprite.
 	 * @param array  $options opcje konfiguracyjne dla generatora
 	 */
@@ -77,11 +77,11 @@ class Generator
 	}
 
 	/**
-	 * Metoda generująca sprite przy użyciu wybranej klasy pozycjonującej. Dodatkowo po wygenerowaniu
-	 * sprite może zostać przetworzony przez dodatkowe filtry
+	 * Method that generates sprite image containning all alements.
+	 *
 	 * @param  PositionerInterface $positioner       Klasa pozycjonująca elementy w pliku
 	 * @param  array               $additonalFilters Dodatkowe filtry Assetic
-	 * @return string zawartość obrazu
+	 * @return string image content
 	 */
 	public function generate(PositionerInterface $positioner, $additonalFilters = array())
 	{
