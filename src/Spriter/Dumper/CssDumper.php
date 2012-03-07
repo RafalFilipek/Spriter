@@ -10,7 +10,7 @@ class CssDumper {
 
 	protected $template = <<<EOF
 .{name}-sprite {
-	background-position: {x}px {y}px;
+	background-position: -{x}px -{y}px;
 }\n
 EOF;
 

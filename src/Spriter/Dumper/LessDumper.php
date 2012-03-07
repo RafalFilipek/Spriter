@@ -17,7 +17,7 @@ EOF;
 
 	protected $template = <<<EOF
 	.{name} {
-		background-position: {x}px {y}px;
+		background-position: -{x}px -{y}px;
 	}\n
 EOF;
 
