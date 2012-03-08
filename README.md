@@ -53,17 +53,24 @@ In project
 	$file->fwrite($dumper->dump());
 ```
 
-Console
--------
+PHAR or old way
+---------------
+
+Phar is the best choice if you dont wnat to download stuff and intalling thing. Just grab it and use it.
 
 For help execute
 
 ```
+php spriter.phar help generate
+# or
 ./bin/spriter help generate
 ```
+
 
 Example
 
 ```
+php spriter.phar generate ~/Php/Project/Images/ --dump-less ~/Php/Project/Styles/sprites.less
+# or
 ./bin/spriter generate ~/Php/Project/Images/ --dump-less ~/Php/Project/Styles/sprites.less
 ```
