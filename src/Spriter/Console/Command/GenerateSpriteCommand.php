@@ -79,9 +79,9 @@ class GenerateSpriteCommand extends Command {
 		$this->addOption('output', null, InputOption::VALUE_OPTIONAL, 'Sprite where sprite will be generated. By default it\'s equal <info>path</info>', null);
 		$this->addOption('no-optim', null, InputOption::VALUE_NONE, 'If set sprite will not be optimized');
 		foreach (array_keys($this->dumpers) as $key) {
-			$this->addOption('dump-' . $key, null, InputOption::VALUE_OPTIONAL, sprintf('Path where <info>%s</info> file will be generated.', strtoupper($key)), false);
+			$this->addOption('dump-' . $key, null, InputOption::VALUE_OPTIONAL, sprintf('Path where <info>%s</info> file will be generated', strtoupper($key)), false);
 		}
-		$this->addOption('rule-name-style', null, InputOption::VALUE_OPTIONAL, 'Rules names style.', 'dash');
+		$this->addOption('rule-name-style', null, InputOption::VALUE_OPTIONAL, 'Rules name style', 'dash');
 	}
 
 	/**
