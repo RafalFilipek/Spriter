@@ -1,8 +1,13 @@
 Under development!
 ==================
 
- * Some messages are not translated.
  * No tests
+
+Requirements
+============
+
+ * PHP 5.3.6
+ * OptiPng must be avaliable in `/usr/bin/optipng`
 
 Installation
 ============
