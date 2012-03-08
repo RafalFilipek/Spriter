@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * SPRITER
+ *
+ * (c) Rafał Filipek <rafal.filipek@gmail.com>
+ *
+ */
+
+use Spriter\Compiler;
+
+$loader = require __DIR__.'/../vendor/.composer/autoload.php';
+
+$loader->add('Spriter', __DIR__.'/../src');
+
+$compiler = new Compiler();
+$compiler->compile();
