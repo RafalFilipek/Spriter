@@ -56,7 +56,7 @@ In project
 PHAR or old way
 ---------------
 
-Phar is the best choice if you dont wnat to download stuff and intalling thing. Just grab it and use it.
+Phar is the best choice if you dont wnat to download stuff and intalling thing. Just [**grab it**](https://github.com/RafalFilipek/Spriter/raw/master/spriter.phar) and use it.
 
 For help execute
 
