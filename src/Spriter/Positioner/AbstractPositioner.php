@@ -15,25 +15,25 @@ use Imagine\Image\Point;
 abstract class AbstractPositioner implements PositionerInterface
 {
 	/**
-	 * Elementy które będą pozycjonowane
+	 * Sprite elements
 	 * @var array
 	 */
 	protected $elements = array();
 
 	/**
-	 * Rozmiary elementów
+	 * Elements dimensions
 	 * @var array
 	 */
 	protected $sizes = array();
 
 	/**
-	 * Liczba elementów
+	 * Number of elements
 	 * @var integer
 	 */
 	protected $count;
 
 	/**
-	 * Opcje konfiguracyjne
+	 * Configuration options
 	 * @var array
 	 */
 	protected $options;
