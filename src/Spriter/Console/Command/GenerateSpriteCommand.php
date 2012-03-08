@@ -73,15 +73,15 @@ class GenerateSpriteCommand extends Command {
 		parent::__construct($name);
 
 		$this->setDescription('Komenda generująca sprite');
-		$this->addArgument('path', InputArgument::OPTIONAL, 'Ścieżka do katalogu przechowującego pliki graficzne', '.');
-		$this->addOption('type', null, InputOption::VALUE_OPTIONAL, 'Sposób generowania pliku (<info>vertical</info>, <info>horizontal</info>)', 'vertical');
-		$this->addOption('name', null, InputOption::VALUE_OPTIONAL, 'Nazwa pliku wyjściowego', 'sprite.png');
-		$this->addOption('output', null, InputOption::VALUE_OPTIONAL, 'Ścieżka do katalogu w którym ma zostać wygenerowany plik. Domyślnie wartość argumentu <info>path</info>', null);
-		$this->addOption('no-optim', null, InputOption::VALUE_NONE, 'Jeżeli ustawiony obraz nie zostanie zoptymalizowany');
+		$this->addArgument('path', InputArgument::OPTIONAL, 'Path containing images', '.');
+		$this->addOption('type', null, InputOption::VALUE_OPTIONAL, 'Positioner type (<info>vertical</info>, <info>horizontal</info>)', 'vertical');
+		$this->addOption('name', null, InputOption::VALUE_OPTIONAL, 'Sprite file name', 'sprite.png');
+		$this->addOption('output', null, InputOption::VALUE_OPTIONAL, 'Sprite where sprite will be generated. By default it\'s equal <info>path</info>', null);
+		$this->addOption('no-optim', null, InputOption::VALUE_NONE, 'If set sprite will not be optimized');
 		foreach (array_keys($this->dumpers) as $key) {
-			$this->addOption('dump-' . $key, null, InputOption::VALUE_OPTIONAL, sprintf('Ścieżka do pliku <info>%s</info> który zostanie wygenerowany.', strtoupper($key)), false);
+			$this->addOption('dump-' . $key, null, InputOption::VALUE_OPTIONAL, sprintf('Path where <info>%s</info> file will be generated.', strtoupper($key)), false);
 		}
-		$this->addOption('rule-name-style', null, InputOption::VALUE_OPTIONAL, 'Sposób budowania nazw reguł styli.', 'dash');
+		$this->addOption('rule-name-style', null, InputOption::VALUE_OPTIONAL, 'Rules names style.', 'dash');
 	}
 
 	/**
