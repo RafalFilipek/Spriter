@@ -27,7 +27,7 @@ class PackedPositioner extends AbstractPositioner
 	public function __construct(array $options = array())
 	{
 		if (!isset($options['limit']) || !is_numeric(($options['limit']))) {
-			throw new Exception('You must provide limit for width.');
+			throw new \Exception('You must provide limit for width.');
 		}
 		$this->limit = $options['limit'];
 		parent::__construct($options);
