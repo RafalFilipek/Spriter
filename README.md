@@ -2,6 +2,7 @@ Under development!
 ==================
 
  * No tests
+ * `Packed` positioner needs some tweaks
 
 Requirements
 ============
@@ -68,9 +69,16 @@ php spriter.phar help generate
 
 
 Example
+-------
 
+### Simple `vertical` sprite
 ```
-php spriter.phar generate ~/Php/Project/Images/ --dump-less ~/Php/Project/Styles/sprites.less
+php spriter.phar generate ~/Php/Project/Images/ --dump-less=~/Php/Project/Styles/sprites.less
 # or
-./bin/spriter generate ~/Php/Project/Images/ --dump-less ~/Php/Project/Styles/sprites.less
+./bin/spriter generate ~/Php/Project/Images/ --dump-less=~/Php/Project/Styles/sprites.less
+```
+###Packed
+```
+php spriter.phar generate ~/Php/Project/Images/ --type=packed --dump-less=~/Php/Project/Styles/sprites.less --limit=700
+./bin/spriter generate ~/Php/Project/Images/ --type=packed --dump-less=~/Php/Project/Styles/sprites.less --limit=700
 ```
