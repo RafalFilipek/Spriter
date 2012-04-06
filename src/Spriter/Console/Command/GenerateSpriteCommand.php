@@ -33,6 +33,7 @@ class GenerateSpriteCommand extends Command {
 	protected $positioners = array(
 		'vertical' => 'Spriter\Positioner\VerticalPositioner',
 		'horizontal' => 'Spriter\Positioner\HorizontalPositioner',
+		'packed' => 'Spriter\Positioner\PackedPositioner',
 	);
 
 	/**
@@ -74,7 +75,8 @@ class GenerateSpriteCommand extends Command {
 
 		$this->setDescription('Komenda generująca sprite');
 		$this->addArgument('path', InputArgument::OPTIONAL, 'Path containing images', '.');
-		$this->addOption('type', null, InputOption::VALUE_OPTIONAL, 'Positioner type (<info>vertical</info>, <info>horizontal</info>)', 'vertical');
+		$this->addOption('type', null, InputOption::VALUE_OPTIONAL, 'Positioner type (<info>vertical</info>, <info>horizontal</info>, <info>packed</info>)', 'vertical');
+		$this->addOption('limit', null, InputOption::VALUE_OPTIONAL, 'Sprite width limit. Required only if <info>type</info> is <info>packed</info>', '500');
 		$this->addOption('name', null, InputOption::VALUE_OPTIONAL, 'Sprite file name', 'sprite.png');
 		$this->addOption('output', null, InputOption::VALUE_OPTIONAL, 'Sprite where sprite will be generated. By default it\'s equal <info>path</info>', null);
 		$this->addOption('no-optim', null, InputOption::VALUE_NONE, 'If set sprite will not be optimized');
@@ -131,7 +133,6 @@ class GenerateSpriteCommand extends Command {
 		$fileName = $this->outputPath->getRealpath() . DIRECTORY_SEPARATOR . $input->getOption('name');
 
 		@unlink($fileName);
-
 		$finder = new Finder();
 		$finder->files()->in($this->path->getRealpath())->notName($fileName)->name('/\.'.implode('|', $this->supported).'$/');
 
@@ -145,7 +146,13 @@ class GenerateSpriteCommand extends Command {
 			$filters = array();
 		}
 
-		$sprite = $generator->generate(new $this->positioners[$input->getOption('type')], $filters);
+		if ($input->getOption('type') == 'packed') {
+			$positioner = new $this->positioners['packed'](array('limit' => $input->getOption('limit')));
+		} else {
+			$positioner = new $this->positioners[$input->getOption('type')];
+		}
+
+		$sprite = $generator->generate($positioner, $filters);
 
 		$file = new \SplFileObject($fileName, 'w');
 		$file->fwrite($sprite);
