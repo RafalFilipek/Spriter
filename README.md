@@ -8,7 +8,7 @@ Requirements
 ============
 
  * PHP 5.3.6
- * If you wnat to use OptiPng it must be avaliable in `/usr/bin/optipng`
+ * If you want to use OptiPng it must be avaliable in `/usr/bin/optipng`
 
 Installation
 ============
