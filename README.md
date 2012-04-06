@@ -80,5 +80,6 @@ php spriter.phar generate ~/Php/Project/Images/ --dump-less=~/Php/Project/Styles
 ###Packed
 ```
 php spriter.phar generate ~/Php/Project/Images/ --type=packed --dump-less=~/Php/Project/Styles/sprites.less --limit=700
+# or
 ./bin/spriter generate ~/Php/Project/Images/ --type=packed --dump-less=~/Php/Project/Styles/sprites.less --limit=700
 ```
