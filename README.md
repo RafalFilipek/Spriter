@@ -77,7 +77,7 @@ php spriter.phar generate ~/Php/Project/Images/ --dump-less=~/Php/Project/Styles
 # or
 ./bin/spriter generate ~/Php/Project/Images/ --dump-less=~/Php/Project/Styles/sprites.less
 ```
-###Packed
+### Cool `packed` sprite
 ```
 php spriter.phar generate ~/Php/Project/Images/ --type=packed --dump-less=~/Php/Project/Styles/sprites.less --limit=700
 # or
