@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Spriter : Sprite Generator" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Spriter</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/RafalFilipek/Spriter">Fork Me on GitHub</a>
+
+          <h1 id="project_title">Spriter</h1>
+          <h2 id="project_tagline">Sprite Generator</h2>
+
+          <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/RafalFilipek/Spriter/zipball/master">Download this project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/RafalFilipek/Spriter/tarball/master">Download this project as a tar.gz file</a>
+          </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>Under development!</h1>
+
+<ul>
+<li>No tests</li>
+<li>
+<code>Packed</code> positioner needs some tweaks</li>
+</ul><h1>Requirements</h1>
+
+<ul>
+<li>PHP 5.3.6</li>
+<li>If you want to use OptiPng it must be avaliable in <code>/usr/bin/optipng</code>
+</li>
+</ul><h1>Installation</h1>
+
+<h2>Cool way</h2>
+
+<p>Just <a href="https://github.com/RafalFilipek/Spriter/raw/master/spriter.phar">download</a> <code>phar</code> version of Spriter.</p>
+
+<h2>Classic way</h2>
+
+<pre><code>git clone https://RafalFilipek@github.com/RafalFilipek/Spriter.git
+cd Spriter
+curl -s http://getcomposer.org/installer | php
+php composer.phar install
+</code></pre>
+
+<h1>Usage</h1>
+
+<h2>Phar</h2>
+
+<h3>Simple <code>vertical</code> sprite</h3>
+
+<pre><code>php spriter.phar generate ~/Php/Project/Images/ --dump-less=~/Php/Project/Styles/sprites.less
+</code></pre>
+
+<h3>Cool <code>packed</code> sprite</h3>
+
+<pre><code>php spriter.phar generate ~/Php/Project/Images/ --type=packed --dump-less=~/Php/Project/Styles/sprites.less --limit=700
+</code></pre>
+
+<h3>Help</h3>
+
+<pre><code>php spriter.phar help generate
+</code></pre>
+
+<h2>Classic</h2>
+
+<h3>Simple <code>vertical</code> sprite</h3>
+
+<pre><code>./[Spriter path]/bin/spriter generate ~/Php/Project/Images/ --dump-less=~/Php/Project/Styles/sprites.less
+</code></pre>
+
+<h3>Cool <code>packed</code> sprite</h3>
+
+<pre><code>./[Spriter path]/bin/spriter generate ~/Php/Project/Images/ --type=packed --dump-less=~/Php/Project/Styles/sprites.less --limit=700
+</code></pre>
+
+<h3>Help</h3>
+
+<pre><code>./[Spriter path]/bin/spriter help generate
+</code></pre>
+
+<h2>In project</h2>
+
+<pre><code>&lt;?php
+    use Symfony\Component\Finder\Finder;
+    use Spriter\Generator;
+    use Spriter\Positioner\VerticalPositioner;
+    use Spriter\Dumper\LessDumper;
+    use Spriter\Dumper\DashNameGenerator;
+    use Assetic\Filter\OptiPngFilter;
+
+    $finder = new Finder();
+    $finder-&gt;files()-&gt;in('./images');
+
+    $generator = new Generator($finder);
+     $filters = array(
+        new OptiPngFilter(),
+    );
+
+    $sprite = $generator-&gt;generate(new VerticalPositioner(), $filters);
+
+    $file = new \SplFileObject('./images/sprite.png', 'w');
+    $file-&gt;fwrite($sprite);
+
+    //Also you can dump CSS/LESS styles for your sprite.
+    $dumper = new LessDumper($generator-&gt;getPositions(), new DashNameGenerator());
+    $file = new \SplFileObject('./less/sprites.less', 'w');
+    $file-&gt;fwrite($dumper-&gt;dump());
+</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Spriter maintained by <a href="https://github.com/RafalFilipek">RafalFilipek</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
